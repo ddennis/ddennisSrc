@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<subsero>
+		
+	<prop name="da" value="assets/language/da.xml"/>
+	<prop name="no" value="assets/language/no.xml"/>
+	<prop name="se" value="assets/language/se.xml"/>
+		
+
+	
+	
+	<pages>	
+					
+		<page id="Forside" classReference="app.view.pages.Forside" swfPath="forside.swf"></page>	
+		
+		<page id="SensationXEPhone" classReference="app.view.pages.SensationXEPhone" swfPath="sensationXePhone.swf"></page>	
+						
+		<page id="BeatsAudio" classReference="app.view.pages.BeatsAudio" swfPath="beatsAudio.swf"></page>	
+		
+		<page id="ProductReview" classReference="app.view.pages.ProductReview" swfPath="productReview.swf"></page>	
+		
+		<page id="Butikker" classReference="app.view.pages.Butikker" swfPath="butikker.swf"></page>	
+			
+		<page id="HtcClub" classReference="app.view.pages.HtcClub" swfPath="htcClub.swf"></page>	
+		
+		<page id="BeatMaker" classReference="app.view.pages.BeatMaker" swfPath="beatMaker.swf"></page>	
+			
+					
+	</pages>
+	
+	
+	<!-- 
+	<pages>	
+					
+		<page id="TestAssets" classReference="app.view.pages.TestAssets" swfPath="assets/assetsTest.swf"></page>	
+				
+	</pages>
+	 -->
+
+	
+	
+	
+</subsero>
