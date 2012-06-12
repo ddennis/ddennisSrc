@@ -6,12 +6,6 @@ package com.ddennis.pages {
 	import flash.events.Event;
 	import flash.events.ProgressEvent;
 	
-	import com.greensock.*;
-	import com.greensock.easing.*;
-	import com.greensock.plugins.*;
-	OverwriteManager.init(OverwriteManager.AUTO); 
-	
-	
 	
 	/**
 	 * ...
@@ -19,48 +13,47 @@ package com.ddennis.pages {
 	 */
 	public class Page extends MovieClip{
 				
-		
+		private var isLoading:Boolean = false;
+		private var _pageNode:XML;
 		
 		public var inited:Boolean = false		
 		public var scrollContent:Sprite
 		
 		public var loadProgress:Number;
-		
 		public var data:Object;		
 		public var indexNum:int
 		public var isCreated:Boolean = false
-		public var loader:LoadSwf;
-		
+		public var loader:LoadSwf;		
 		public var assetPage:AbstractPage;
-		private var isLoading:Boolean = false;
-		private var _pageNode:XML;
 		
 		
+	//##########################################################################################################
 		
-		
+	
 		public function Page(pageNode:XML) {
 			_pageNode = pageNode;
 			
 		}
 		
 		
-		// 
+	//##########################################################################################################
+	
+		 
 		public function setData(data:Object):void {
 			this.data = data;					
 			
 		}
 		
 		
-
+	//##########################################################################################################
+	
+	
 		/**
 		 * @usage 	super.loadSwf (path, this)
 		 * @param	path
 		 * @param	target
-		 */
-		
-		public function loadSwf():void {
-			
-			trace ("Page.as > _pageNode.@swfPath  = "+_pageNode.@swfPath)
+		 */		
+		public function loadSwf():void {			
 			isLoading = true
 			loader = new LoadSwf (_pageNode.@swfPath)										
 			loader.addEventListener(Event.COMPLETE , loaderComplete)
@@ -68,10 +61,10 @@ package com.ddennis.pages {
 			dispatchEvent(new PageEvent(PageEvent.START_LOADING , indexNum))
 			
 		}
+	
 		
-		
-		
-		
+	//##########################################################################################################
+	
 		
 		private function loaderProgress(e:ProgressEvent):void {
 					
@@ -79,78 +72,71 @@ package com.ddennis.pages {
 				//trace ("Page.as > loadProgress   = "+loadProgress )
 				dispatchEvent(new PageEvent(PageEvent.PAGE_LOADING, indexNum))
 		}
-		
-		
-		
 				
+		
+	//##########################################################################################################
+	
 		
 		private function loaderComplete(e:Event):void {			
 			isLoading = false
-			loader.removeEventListener(Event.COMPLETE , loaderComplete)
-		
-			assetPage = loader.getNewClassByName(_pageNode.@classReference) as AbstractPage 
-			
+			loader.removeEventListener(Event.COMPLETE , loaderComplete)		
+			assetPage = loader.getNewClassByName(_pageNode.@classReference) as AbstractPage 			
 			assetPage.setData (data)	
-			assetPage.indexNum = indexNum
-			
-			inited = true
-			
-			initPageContent ()
-			
-			dispatchEvent(new PageEvent(PageEvent.PAGE_LOADED, indexNum))
-			
-			
+			assetPage.indexNum = indexNum			
+			inited = true			
+			initPageContent ()			
+			dispatchEvent(new PageEvent(PageEvent.PAGE_LOADED, indexNum))			
 		}
 		
-		
-		
-		
-		
-		public function initPageContent():void {
 			
+	//##########################################################################################################
+	
+		
+		public function initPageContent():void {			
 			this.addEventListener(Event.REMOVED_FROM_STAGE , offStage)
 			addChild (assetPage)				
 			assetPage.activatePage ()			
 		}
 				
+		
+	//##########################################################################################################
+		
 	
-	
-		public function requestPage():void{
-			
-			if (inited) {	
-				
-				initPageContent ()
-				
-			}else {	
-				
+		public function requestPage():void{			
+			if (inited) {					
+				initPageContent ()				
+			}else {					
 				loadSwf ()
 			}		
 		}
 		
 		
+	//##########################################################################################################
 		
 		
 		private function offStage(e:Event):void {			
-			
-			assetPage.cleanUp ()
-			
+			assetPage.cleanUp ()			
 			if (isLoading) {
 				loader.close ()
 			}
-			removeEventListener(Event.REMOVED_FROM_STAGE, offStage);	
-			
+			removeEventListener(Event.REMOVED_FROM_STAGE, offStage);				
 		}
-						
 		
 		
+	//##########################################################################################################
+		
+	
 		public function fadeIn():void {			
 			this.alpha = 0
-			TweenLite.to (this , 1, { alpha:1, delay:0 , ease:Expo.easeOut } );		
+			//TweenLite.to (this , 1, { alpha:1, delay:0 , ease:Expo.easeOut } );		
 		}
+		
+		
+	//##########################################################################################################
 		
 		
 		public function fadeOut():void {			
-			TweenLite.to (this , 1, { alpha:0, delay:0 , ease:Expo.easeOut } );
+			//TweenLite.to (this , 1, { alpha:0, delay:0 , ease:Expo.easeOut } );
 		}
 		
 			

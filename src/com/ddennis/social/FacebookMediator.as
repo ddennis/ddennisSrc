@@ -1,4 +1,4 @@
-package app.util {
+package com.ddennis.social {
 	
 	import com.adobe.serialization.json.JSON;
 	import com.facebook.graph.Facebook;
@@ -25,7 +25,7 @@ package app.util {
 		public static const POST_COMPLETE:String = "postComplete"
 		public static const POST_FAIL:String = "postFail"
 		
-		public static const APP_ID:String = "308251909200289"
+		public static const APP_ID:String = ""
 		
 		private var _isLoggedIn:Boolean;
 		
@@ -80,7 +80,7 @@ package app.util {
 			var method:String = "feed";
 						
 				var data:Object = { };				
-				var obj:String =  String ( '{ "name": " ' + titleTxt  +  '", "link": "' +  linkUrl+ '" ,"picture" : "http://composer.beats2011.htc.subtest.dk/img/fb_share.png", "description": "'+ descriptionTxt+ '"}'  )
+				var obj:String =  String ( '{ "name": " ' + titleTxt  +  '", "link": "' +  linkUrl+ '" ,"picture" : "http://path to image/img/fb_share.png", "description": "'+ descriptionTxt+ '"}'  )
 				  
 				try {
 															

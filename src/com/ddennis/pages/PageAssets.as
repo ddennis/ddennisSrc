@@ -7,8 +7,8 @@
 	import flash.text.Font;
 
 	public class PageAssets	{
-		public static var applicationDomain:ApplicationDomain;
 		
+		public static var applicationDomain:ApplicationDomain;
 		
 		
 		public static function getMC(className:String):MovieClip {
@@ -24,18 +24,16 @@
 		
 		
 		public static function getFont(fontName:String):* {			
-			 var myFont  = applicationDomain.getDefinition(fontName) 		 
-			 return new myFont();
-			 
-			 //return new Font ()
+			//var myFont  = applicationDomain.getDefinition(fontName) 		 
+			//return new myFont();
 		}
+				
 		
-		
-		
-		public static function getDO(className:String):DisplayObject {
-			
+		public static function getDisplayObj(className:String):DisplayObject {			
 			 var myClass:Class = applicationDomain.getDefinition(className) as Class;
 			 return new myClass();
 		}
+		
+		
 	}
 }
