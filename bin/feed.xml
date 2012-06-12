@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<subsero>
+		
+	<prop name="da" value="assets/language/da.xml"/>
+	<prop name="no" value="assets/language/no.xml"/>
+	<prop name="se" value="assets/language/se.xml"/>
+		
+
+	
+	
+	<pages>	
+					
+		<page id="Forside" classReference="app.view.pages.Forside" swfPath="forside.swf"></page>	
+									
+	</pages>
+	
+	
+	<!-- 
+	<pages>	
+					
+		<page id="TestAssets" classReference="app.view.pages.TestAssets" swfPath="assets/assetsTest.swf"></page>	
+				
+	</pages>
+	 -->
+
+	
+	
+	
+</subsero>
